@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kangman/screens/start_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,8 +15,17 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+            textStyle: TextStyle(
+              fontSize: 30,
+              color: Colors.black87,
+            ),
+          ),
+        ),
       ),
-      home: Container(),
+      home: StartScreen(),
     );
   }
 }
