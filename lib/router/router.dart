@@ -3,6 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:kangman/screens/play_screen.dart';
 import 'package:kangman/screens/start_screen.dart';
 
+import '../screens/rank_screen.dart';
+
 class CustomRouter extends StatelessWidget {
   CustomRouter({super.key});
 
@@ -12,6 +14,10 @@ class CustomRouter extends StatelessWidget {
       title: 'kang man',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        scaffoldBackgroundColor: Color.fromARGB(210, 44, 44, 44),
+        appBarTheme: AppBarTheme(
+          backgroundColor: Color.fromARGB(210, 36, 36, 36),
+        ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
@@ -21,6 +27,12 @@ class CustomRouter extends StatelessWidget {
             ),
           ),
         ),
+        textTheme: TextTheme(
+          titleMedium: TextStyle(
+            fontSize: 20,
+            color: Colors.white,
+          ),
+        )
       ),
       routeInformationProvider: _router.routeInformationProvider,
       routeInformationParser: _router.routeInformationParser,
@@ -35,6 +47,14 @@ class CustomRouter extends StatelessWidget {
         builder: (BuildContext context, GoRouterState state) {
           return StartScreen();
         },
+        routes: [
+          GoRoute(
+            path: 'rank',
+            builder: (BuildContext context, GoRouterState state) {
+              return RankScreen();
+            },
+          )
+        ],
       ),
       GoRoute(
         path: '/play',
@@ -42,6 +62,12 @@ class CustomRouter extends StatelessWidget {
           return PlayScreen();
         },
       ),
+      // GoRoute(
+      //   path: '/rank',
+      //   builder: (BuildContext context, GoRouterState state) {
+      //     return RankScreen();
+      //   },
+      // )
     ],
   );
 }

@@ -10,13 +10,11 @@ class StartScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         foregroundColor: Colors.white,
-        backgroundColor: Colors.black87,
         elevation: 0,
       ),
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        color: Colors.black87,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -59,7 +57,9 @@ class StartScreen extends StatelessWidget {
                 Container(
                   width: _size.width / 2,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      GoRouter.of(context).go('/rank');
+                    },
                     child: Text('ranking'),
                   ),
                 ),
