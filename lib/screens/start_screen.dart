@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class StartScreen extends StatelessWidget {
   const StartScreen({super.key});
@@ -46,7 +47,9 @@ class StartScreen extends StatelessWidget {
                 Container(
                   width: _size.width / 2,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      GoRouter.of(context).go('/play');
+                    },
                     child: Text('start'),
                   ),
                 ),
