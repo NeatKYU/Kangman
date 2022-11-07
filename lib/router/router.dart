@@ -13,27 +13,26 @@ class CustomRouter extends StatelessWidget {
     return MaterialApp.router(
       title: 'kang man',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-        scaffoldBackgroundColor: Color.fromARGB(210, 44, 44, 44),
-        appBarTheme: AppBarTheme(
-          backgroundColor: Color.fromARGB(210, 36, 36, 36),
-        ),
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-            textStyle: TextStyle(
-              fontSize: 30,
-              color: Colors.black87,
+          primarySwatch: Colors.blue,
+          scaffoldBackgroundColor: Color.fromARGB(210, 44, 44, 44),
+          appBarTheme: AppBarTheme(
+            backgroundColor: Color.fromARGB(210, 36, 36, 36),
+          ),
+          elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ElevatedButton.styleFrom(
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+              textStyle: TextStyle(
+                fontSize: 30,
+                color: Colors.black87,
+              ),
             ),
           ),
-        ),
-        textTheme: TextTheme(
-          titleMedium: TextStyle(
-            fontSize: 20,
-            color: Colors.white,
-          ),
-        )
-      ),
+          textTheme: TextTheme(
+            titleMedium: TextStyle(
+              fontSize: 20,
+              color: Colors.white,
+            ),
+          )),
       routeInformationProvider: _router.routeInformationProvider,
       routeInformationParser: _router.routeInformationParser,
       routerDelegate: _router.routerDelegate,
@@ -53,14 +52,14 @@ class CustomRouter extends StatelessWidget {
             builder: (BuildContext context, GoRouterState state) {
               return RankScreen();
             },
-          )
+          ),
+          GoRoute(
+            path: 'play',
+            builder: (BuildContext context, GoRouterState state) {
+              return PlayScreen();
+            },
+          ),
         ],
-      ),
-      GoRoute(
-        path: '/play',
-        builder: (BuildContext context, GoRouterState state) {
-          return PlayScreen();
-        },
       ),
       // GoRoute(
       //   path: '/rank',

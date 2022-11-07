@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:kangman/widgets/word.dart';
 
 class PlayScreen extends StatelessWidget {
   const PlayScreen({super.key});
@@ -7,15 +8,37 @@ class PlayScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('play screen'),
-        leading: IconButton(
-          icon: Icon(Icons.home),
-          onPressed: () {
-            GoRouter.of(context).go('/');
-          },
+        appBar: AppBar(
+          title: Text('play screen'),
+          leading: IconButton(
+            icon: Icon(Icons.home),
+            onPressed: () {
+              GoRouter.of(context).go('/');
+            },
+          ),
         ),
-      ),
-    );
+        body: Column(
+          children: [
+            // 행맨 그림 위치
+            Container(
+              color: Colors.blueGrey,
+            ),
+
+            // 단어 위치
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  color: Colors.blueGrey,
+                ),
+                width: double.infinity,
+                height: 100,
+                child: Word(word: 'test'),
+              ),
+            )
+            // 알파벳 위치
+          ],
+        ));
   }
 }
