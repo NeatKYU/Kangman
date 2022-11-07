@@ -7,6 +7,34 @@ class PlayScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<String> _alpabet = [
+      'a',
+      'b',
+      'c',
+      'd',
+      'e',
+      'f',
+      'g',
+      'h',
+      'i',
+      'j',
+      'k',
+      'l',
+      'm',
+      'n',
+      'o',
+      'p',
+      'q',
+      'r',
+      's',
+      't',
+      'u',
+      'v',
+      'w',
+      'x',
+      'y',
+      'z'
+    ];
     return Scaffold(
         appBar: AppBar(
           title: Text('play screen'),
@@ -36,8 +64,31 @@ class PlayScreen extends StatelessWidget {
                 height: 100,
                 child: Word(word: 'test'),
               ),
-            )
+            ),
             // 알파벳 위치
+
+            Expanded(
+              child: Container(
+                width: double.infinity,
+                child: GridView.builder(
+                  itemCount: _alpabet.length,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 8,
+                    mainAxisSpacing: 5,
+                    crossAxisSpacing: 5,
+                  ),
+                  itemBuilder: (context, index) {
+                    return OutlinedButton(
+                      style: OutlinedButton.styleFrom(
+                        backgroundColor: Colors.blueGrey,
+                      ),
+                      onPressed: () {},
+                      child: Text(_alpabet[index], style: Theme.of(context).textTheme.titleMedium,),
+                    );
+                  },
+                ),
+              ),
+            )
           ],
         ));
   }
