@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:kangman/widgets/alpabet_button.dart';
 import 'package:kangman/widgets/word.dart';
 
 class PlayScreen extends StatelessWidget {
@@ -78,13 +79,7 @@ class PlayScreen extends StatelessWidget {
                     crossAxisSpacing: 5,
                   ),
                   itemBuilder: (context, index) {
-                    return OutlinedButton(
-                      style: OutlinedButton.styleFrom(
-                        backgroundColor: Colors.blueGrey,
-                      ),
-                      onPressed: () {},
-                      child: Text(_alpabet[index], style: Theme.of(context).textTheme.titleMedium,),
-                    );
+                    return AlpbetButton(label: _alpabet[index]);
                   },
                 ),
               ),
