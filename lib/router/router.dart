@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:kangman/providers/word_provider.dart';
 import 'package:kangman/screens/play_screen.dart';
 import 'package:kangman/screens/start_screen.dart';
+import 'package:provider/provider.dart';
 
 import '../screens/rank_screen.dart';
 
@@ -10,32 +12,37 @@ class CustomRouter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'kang man',
-      theme: ThemeData(
-          primarySwatch: Colors.blue,
-          scaffoldBackgroundColor: Color.fromARGB(210, 44, 44, 44),
-          appBarTheme: AppBarTheme(
-            backgroundColor: Color.fromARGB(210, 36, 36, 36),
-          ),
-          elevatedButtonTheme: ElevatedButtonThemeData(
-            style: ElevatedButton.styleFrom(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-              textStyle: TextStyle(
-                fontSize: 30,
-                color: Colors.black87,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => WordProvider()),
+      ],
+      child: MaterialApp.router(
+        title: 'kang man',
+        theme: ThemeData(
+            primarySwatch: Colors.blue,
+            scaffoldBackgroundColor: Color.fromARGB(210, 44, 44, 44),
+            appBarTheme: AppBarTheme(
+              backgroundColor: Color.fromARGB(210, 36, 36, 36),
+            ),
+            elevatedButtonTheme: ElevatedButtonThemeData(
+              style: ElevatedButton.styleFrom(
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                textStyle: TextStyle(
+                  fontSize: 30,
+                  color: Colors.black87,
+                ),
               ),
             ),
-          ),
-          textTheme: TextTheme(
-            titleMedium: TextStyle(
-              fontSize: 20,
-              color: Colors.white,
-            ),
-          )),
-      routeInformationProvider: _router.routeInformationProvider,
-      routeInformationParser: _router.routeInformationParser,
-      routerDelegate: _router.routerDelegate,
+            textTheme: TextTheme(
+              titleMedium: TextStyle(
+                fontSize: 20,
+                color: Colors.white,
+              ),
+            )),
+        routeInformationProvider: _router.routeInformationProvider,
+        routeInformationParser: _router.routeInformationParser,
+        routerDelegate: _router.routerDelegate,
+      ),
     );
   }
 

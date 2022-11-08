@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:kangman/providers/word_provider.dart';
+import 'package:provider/provider.dart';
 
 class AlpbetButton extends StatefulWidget {
   final String label;
@@ -15,12 +17,12 @@ class _AlpbetButtonState extends State<AlpbetButton> {
   Widget build(BuildContext context) {
     return OutlinedButton(
       style: OutlinedButton.styleFrom(
-        backgroundColor: Colors.blueGrey,
-        disabledBackgroundColor: Colors.grey
-      ),
+          backgroundColor: Colors.blueGrey,
+          disabledBackgroundColor: Colors.grey),
       onPressed: _disable
           ? null
           : () {
+              context.read<WordProvider>().setWordList(widget.label);
               setState(() {
                 _disable = true;
               });
@@ -29,9 +31,7 @@ class _AlpbetButtonState extends State<AlpbetButton> {
         child: Text(
           widget.label,
           style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                fontSize: 30,
-                color: _disable ? Colors.black : Colors.white
-              ),
+              fontSize: 30, color: _disable ? Colors.black : Colors.white),
         ),
       ),
     );
