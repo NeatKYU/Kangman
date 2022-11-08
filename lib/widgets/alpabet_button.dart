@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kangman/providers/word_provider.dart';
+import 'package:kangman/providers/gm_provider.dart';
 import 'package:provider/provider.dart';
 
 class AlpbetButton extends StatefulWidget {
@@ -22,7 +22,7 @@ class _AlpbetButtonState extends State<AlpbetButton> {
       onPressed: _disable
           ? null
           : () {
-              context.read<WordProvider>().setWordList(widget.label);
+              context.read<GmProvider>().setWordList(widget.label);
               setState(() {
                 _disable = true;
               });

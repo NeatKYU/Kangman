@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:kangman/providers/word_provider.dart';
+import 'package:kangman/providers/gm_provider.dart';
 import 'package:kangman/screens/play_screen.dart';
 import 'package:kangman/screens/start_screen.dart';
 import 'package:provider/provider.dart';
@@ -14,7 +14,7 @@ class CustomRouter extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => WordProvider()),
+        ChangeNotifierProvider(create: (_) => GmProvider()),
       ],
       child: MaterialApp.router(
         title: 'kang man',

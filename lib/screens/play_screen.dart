@@ -46,17 +46,34 @@ class PlayScreen extends StatelessWidget {
             },
           ),
         ),
-        body: Column(
-          children: [
-            // 행맨 그림 위치
-            Container(
-              color: Colors.blueGrey,
-            ),
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              // 현재 상태 인터페이스 공간
+              SizedBox(
+                width: double.infinity,
+                height: 50,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: List.generate(
+                    5,
+                    (index) {
+                      return const Icon(
+                        Icons.favorite,
+                        color: Colors.white,
+                      );
+                    },
+                  ),
+                ),
+              ),
+              // 행맨 그림 위치
+              Container(
+                color: Colors.blueGrey,
+              ),
 
-            // 단어 위치
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
+              // 단어 위치
+              Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                   color: Colors.blueGrey,
@@ -65,26 +82,26 @@ class PlayScreen extends StatelessWidget {
                 height: 100,
                 child: Word(word: 'test'),
               ),
-            ),
-            // 알파벳 위치
-
-            Expanded(
-              child: Container(
-                width: double.infinity,
-                child: GridView.builder(
-                  itemCount: _alpabet.length,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 8,
-                    mainAxisSpacing: 5,
-                    crossAxisSpacing: 5,
+              const SizedBox(height: 10,),
+              // 알파벳 위치
+              Expanded(
+                child: SizedBox(
+                  width: double.infinity,
+                  child: GridView.builder(
+                    itemCount: _alpabet.length,
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 8,
+                      mainAxisSpacing: 5,
+                      crossAxisSpacing: 5,
+                    ),
+                    itemBuilder: (context, index) {
+                      return AlpbetButton(label: _alpabet[index]);
+                    },
                   ),
-                  itemBuilder: (context, index) {
-                    return AlpbetButton(label: _alpabet[index]);
-                  },
                 ),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ));
   }
 }
