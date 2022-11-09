@@ -17,8 +17,9 @@ class _AlpbetButtonState extends State<AlpbetButton> {
   Widget build(BuildContext context) {
     return OutlinedButton(
       style: OutlinedButton.styleFrom(
-          backgroundColor: Colors.blueGrey,
-          disabledBackgroundColor: Colors.grey),
+        backgroundColor: Colors.blueGrey,
+        disabledBackgroundColor: Colors.grey,
+      ),
       onPressed: _disable
           ? null
           : () {

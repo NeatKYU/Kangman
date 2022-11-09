@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 
 class GmProvider extends ChangeNotifier {
-  final List<String> _wordList = [];
+  List<String> _wordList = [];
   int _helthCount = 5;
 
+  void initData() {
+    _wordList = [];
+    _helthCount = 5;
+  }
+
   void setWordList(String alpabet) {
-    _wordList.add(alpabet);
-    notifyListeners();
+    if (!_wordList.contains(alpabet)) {
+      _wordList.add(alpabet);
+      notifyListeners();
+    }
   }
 
   void downHelthCount() {

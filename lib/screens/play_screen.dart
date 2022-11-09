@@ -90,7 +90,7 @@ class PlayScreen extends StatelessWidget {
                   child: GridView.builder(
                     itemCount: _alpabet.length,
                     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 8,
+                      crossAxisCount: 7,
                       mainAxisSpacing: 5,
                       crossAxisSpacing: 5,
                     ),
