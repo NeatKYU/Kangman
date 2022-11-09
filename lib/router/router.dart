@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kangman/providers/gm_provider.dart';
+import 'package:kangman/screens/game_over_screen.dart';
 import 'package:kangman/screens/play_screen.dart';
 import 'package:kangman/screens/start_screen.dart';
 import 'package:provider/provider.dart';
@@ -9,6 +10,8 @@ import '../screens/rank_screen.dart';
 
 class CustomRouter extends StatelessWidget {
   CustomRouter({super.key});
+
+  final gmState = GmProvider();
 
   @override
   Widget build(BuildContext context) {
@@ -66,14 +69,22 @@ class CustomRouter extends StatelessWidget {
               return PlayScreen();
             },
           ),
+          GoRoute(
+            path: 'over',
+            builder: (BuildContext context, GoRouterState state) {
+              return GameOverScreen();
+            },
+          ),
         ],
       ),
-      // GoRoute(
-      //   path: '/rank',
-      //   builder: (BuildContext context, GoRouterState state) {
-      //     return RankScreen();
-      //   },
-      // )
     ],
+    // redirect: (context, state) {
+    // print(context.watch<GmProvider>().helthCount);
+    // if (gmState.helthCount < 5) {
+    //   return '/over';
+    // }
+    //   return null;
+    // },
+    // refreshListenable: gmState,
   );
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:kangman/providers/gm_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -15,6 +16,7 @@ class _AlpbetButtonState extends State<AlpbetButton> {
 
   @override
   Widget build(BuildContext context) {
+    GmProvider gameManager = context.read<GmProvider>();
     return OutlinedButton(
       style: OutlinedButton.styleFrom(
         backgroundColor: Colors.blueGrey,
@@ -23,7 +25,13 @@ class _AlpbetButtonState extends State<AlpbetButton> {
       onPressed: _disable
           ? null
           : () {
-              context.read<GmProvider>().setWordList(widget.label);
+              gameManager.setWordList(widget.label);
+              if (!gameManager.quizWord.contains(widget.label)) {
+                gameManager.downHelthCount();
+              }
+              if (gameManager.helthCount < 1) {
+                GoRouter.of(context).go('/over');
+              }
               setState(() {
                 _disable = true;
               });

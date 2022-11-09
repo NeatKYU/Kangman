@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:kangman/providers/gm_provider.dart';
 import 'package:kangman/widgets/alpabet_button.dart';
 import 'package:kangman/widgets/word.dart';
+import 'package:provider/provider.dart';
 
 class PlayScreen extends StatelessWidget {
   const PlayScreen({super.key});
@@ -57,7 +59,7 @@ class PlayScreen extends StatelessWidget {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: List.generate(
-                    5,
+                    context.watch<GmProvider>().helthCount,
                     (index) {
                       return const Icon(
                         Icons.favorite,
@@ -82,14 +84,17 @@ class PlayScreen extends StatelessWidget {
                 height: 100,
                 child: Word(word: 'test'),
               ),
-              const SizedBox(height: 10,),
+              const SizedBox(
+                height: 10,
+              ),
               // 알파벳 위치
               Expanded(
                 child: SizedBox(
                   width: double.infinity,
                   child: GridView.builder(
                     itemCount: _alpabet.length,
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 7,
                       mainAxisSpacing: 5,
                       crossAxisSpacing: 5,
