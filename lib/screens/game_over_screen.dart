@@ -1,3 +1,4 @@
+import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kangman/providers/gm_provider.dart';
@@ -9,14 +10,25 @@ class GameOverScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(''),
-      ),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Game Over!!'),
-            OutlinedButton(
+            Stack(
+              alignment: Alignment.bottomCenter,
+              children: [
+                ExtendedImage.asset('assets/img/gameover.jpeg'),
+                Text(
+                  'You Died',
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleMedium
+                      ?.copyWith(fontSize: 50),
+                ),
+              ],
+            ),
+            const SizedBox(height: 50),
+            ElevatedButton(
               onPressed: () {
                 context.read<GmProvider>().initData();
                 GoRouter.of(context).go('/play');
