@@ -1,3 +1,4 @@
+import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kangman/providers/gm_provider.dart';
@@ -38,6 +39,8 @@ class PlayScreen extends StatelessWidget {
       'y',
       'z'
     ];
+    int _helthCount = context.read<GmProvider>().helthCount;
+
     return Scaffold(
         appBar: AppBar(
           title: Text('play screen'),
@@ -69,10 +72,6 @@ class PlayScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              // 행맨 그림 위치
-              Container(
-                color: Colors.blueGrey,
-              ),
 
               // 단어 위치
               Container(
@@ -81,11 +80,33 @@ class PlayScreen extends StatelessWidget {
                   color: Colors.blueGrey,
                 ),
                 width: double.infinity,
-                height: 100,
+                height: 80,
                 child: Word(word: 'test'),
               ),
               const SizedBox(
                 height: 10,
+              ),
+              // 행맨 그림 위치
+              SizedBox(
+                width: double.infinity,
+                height: 300,
+                child: Center(
+                  child: Stack(
+                    children: [
+                      ExtendedImage.asset('assets/img/hang.png'),
+                      if (_helthCount <= 5)
+                        ExtendedImage.asset('assets/img/head.png'),
+                      if (_helthCount <= 4)
+                        ExtendedImage.asset('assets/img/body.png'),
+                      if (_helthCount <= 3)
+                        ExtendedImage.asset('assets/img/leftArm.png'),
+                      if (_helthCount <= 2)
+                        ExtendedImage.asset('assets/img/rightArm.png'),
+                      if (_helthCount <= 1)
+                        ExtendedImage.asset('assets/img/leftFoot.png'),
+                    ],
+                  ),
+                ),
               ),
               // 알파벳 위치
               Expanded(

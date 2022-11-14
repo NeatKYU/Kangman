@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 class GmProvider extends ChangeNotifier {
   List<String> _wordList = [];
-  int _helthCount = 5;
+  int _helthCount = 6;
   String _quizWord = '';
 
   void initData() {
     _wordList = [];
-    _helthCount = 5;
+    _helthCount = 6;
     _quizWord = 'test';
   }
 
