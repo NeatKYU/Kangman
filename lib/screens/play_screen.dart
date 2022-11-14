@@ -60,16 +60,25 @@ class PlayScreen extends StatelessWidget {
                 width: double.infinity,
                 height: 50,
                 child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: List.generate(
-                    context.watch<GmProvider>().helthCount,
-                    (index) {
-                      return const Icon(
-                        Icons.favorite,
-                        color: Colors.white,
-                      );
-                    },
-                  ),
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: List.generate(
+                        context.watch<GmProvider>().helthCount,
+                        (index) {
+                          return const Icon(
+                            Icons.favorite,
+                            color: Colors.white,
+                          );
+                        },
+                      ),
+                    ),
+                    Text(
+                      context.read<GmProvider>().totalScore.toString(),
+                      style: Theme.of(context).textTheme.titleMedium,
+                    ),
+                  ],
                 ),
               ),
 
@@ -81,6 +90,8 @@ class PlayScreen extends StatelessWidget {
                 ),
                 width: double.infinity,
                 height: 80,
+                // child: Word(word: context.read<GmProvider>().quizWord),
+                // TODO test용도 
                 child: Word(word: 'test'),
               ),
               const SizedBox(
