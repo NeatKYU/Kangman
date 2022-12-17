@@ -12,8 +12,6 @@ class AlpbetButton extends StatefulWidget {
 }
 
 class _AlpbetButtonState extends State<AlpbetButton> {
-  bool _disable = false;
-
   @override
   Widget build(BuildContext context) {
     GmProvider gameManager = context.read<GmProvider>();
@@ -22,25 +20,35 @@ class _AlpbetButtonState extends State<AlpbetButton> {
         backgroundColor: Colors.blueGrey,
         disabledBackgroundColor: Colors.grey,
       ),
-      onPressed: _disable
+      onPressed: gameManager.wordSplitList.contains(widget.label)
           ? null
           : () {
               gameManager.setWordList(widget.label);
+
+              print(gameManager.quizWord);
+
               if (!gameManager.quizWord.contains(widget.label)) {
                 gameManager.downHelthCount();
               }
+
+              if (gameManager.correctWord(gameManager.wordSplitList)) {
+                print('correct');
+                gameManager.nextStage();
+                GoRouter.of(context).go('/play');
+              }
+
               if (gameManager.helthCount < 1) {
                 GoRouter.of(context).go('/over');
               }
-              setState(() {
-                _disable = true;
-              });
             },
       child: Center(
         child: Text(
           widget.label,
           style: Theme.of(context).textTheme.titleMedium?.copyWith(
-              fontSize: 30, color: _disable ? Colors.black : Colors.white),
+              fontSize: 30,
+              color: gameManager.wordSplitList.contains(widget.label)
+                  ? Colors.black
+                  : Colors.white),
         ),
       ),
     );

@@ -9,7 +9,7 @@ class Word extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<String> _wordList = word.split('');
-    final List<String> _pWordList = context.watch<GmProvider>().wordList;
+    final List<String> _pWordList = context.watch<GmProvider>().wordSplitList;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
