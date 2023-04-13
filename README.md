@@ -1,16 +1,14 @@
 # kangman
+플러터 배우고 행맨게임 만들어보자해서 만들어봤습니다. 간단한 단어 몇가지가 들어있습니다. 랜덤으로 출력되며 맞추시면 됩니다.
 
-A new Flutter project.
+## preview
+<img width="515" alt="스크린샷 2023-04-08 오후 9 53 03" src="https://user-images.githubusercontent.com/22316798/231773193-1dc09ea1-2b64-4cc0-9b70-b18de83b3ffe.png"><img width="519" alt="스크린샷 2023-04-08 오후 9 53 36" src="https://user-images.githubusercontent.com/22316798/231773215-02acda41-6fc4-4e6c-9b5f-4368a528aa8e.png">
+
 
 ## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```
+git clone https://github.com/NeatKYU/Kangman.git
+cd Kangman
+flutter pub get
+flutter run
+```
